@@ -1,0 +1,73 @@
+{% extends "structure.html"%}
+{% include "includes/_navbar.html"%}
+{% block body %}
+<div class="container">
+
+<div class="row">
+
+
+	<div class="col-md-6" id ="container">
+		<form class="form-group" method="POST" action="/travel">
+		<span class="h3">TRAVEL FROM:</span><br>
+
+		<input type="text" required value="{{ request.form.origin }}" placeholder="Origin" name="origin" class="form-control">
+		<span class="h3">TO:</span>
+		<input type="text" required value="{{ request.form.destination }}" placeholder="Destination" name="destination" class="form-control">
+		<span class="h3">ON ROUTE:</span>
+		<select class="form-control" name="route">
+			{% for x in route %}
+			  <option value="{{ x[0] }}">{{ x[0] }}</option>
+
+			{% endfor %}
+		</select>
+		<span class="h3">ON DATE:</span>
+		<select class="form-control" name="date">
+			{% for x in date %}
+			  <option value="{{ x[0] }}">{{ x[0] }}</option>
+			{% endfor %}
+		</select> 
+		<span class="h3">PERIOD:</span>
+		<select class="form-control" name="period">
+			{% for x in period %}
+			  <option value="{{ x }}">{{ x }}</option>
+			{% endfor %}
+		</select> 
+
+		<br><br>
+		<input type="submit" value="Reserve" class="form-control btn btn-warning" name="reserve">
+
+	</form>
+		{% if message %}
+		<span class="h3">{{ message }}:</span>
+		{% endif %}
+
+	</div>
+
+	<div class="col-md-6">
+		<table class="table table-stripped">
+		<span class="h3">ALL ROUTES</span>
+	<tr>
+
+		<th>Route</th><th>Origin</th><th>Destination</th><th>Cost</th>
+	</tr>
+	{% for data in routes %}
+	<tr>
+	{% for dat in data %}
+	 <td>
+	 	{{ dat }}
+	 </td>
+	 {% endfor %}
+	</tr>
+	{% endfor %}	
+	</table>
+	</div>
+
+
+
+
+</div>
+	
+
+</div>
+
+{% endblock body%}

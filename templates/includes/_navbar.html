@@ -1,0 +1,48 @@
+<nav class="navbar navbar-dark bg-dark sticky-top navbar-expand-md">
+        <div class="container-fluid">
+            <div class="d-none d-sm-block">
+                    <a href="/" class="navbar-brand"> <img src="{{ url_for('static', filename='images/artics.png') }}" alt="">
+                    Imara
+                    </a>
+            </div>  
+            <div class="d-sm-none">
+                    <a href="/" class="navbar-brand"> <img src="{{ url_for('static', filename='images/artics_.png') }}" alt="">
+                    </a>
+            </div>
+<!--             
+            <form action="" class="form-group form-inline" id="search-form">
+                    <input type="text" class="form-control" placeholder="Search" id="search">
+            </form> -->
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a href="/home" class="nav-link">Home</a>
+                    </li>
+                    {% for m in menu %}
+                    <li class="nav-item">
+                        <a href="/{{ m }}" class="nav-link">{{ m }}</a>
+                    </li>
+                    {% endfor %}
+
+                    {% if user %}
+                    <li class="nav-item">
+                        <a href="/user" class="nav-link">
+                            {{ user }}
+                        </a>
+                    </li>
+                    {% else %}
+                        
+                    {% endif%}
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>

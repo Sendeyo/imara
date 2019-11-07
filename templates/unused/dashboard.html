@@ -1,0 +1,85 @@
+{% extends "structure.html"%}
+{% include "includes/_navbar.html"%}
+{% block body %}
+<div class="container">
+
+<div class="row">
+	<div class="col-sm-2">
+		
+	</div>
+	<div class="col-sm-10">
+	{% if data %}
+		<span class="h2 center-text">All Travels</span>
+	{% else %}
+		<span class="h4">
+			<p>
+				Create reservations and start travelling with us now
+			</p>
+		</span>
+	{% endif %}
+		<ul class="list-group list-group-flush">
+			{% for one in data %}
+			<li class="list-group-item">
+				<div class="card">
+					<div class="card-body 
+						{% if one[8] %}btn-success{% else %}btn-warning{% endif %}
+					">
+					<div class="card-title ">
+						<span class="h3">
+							{{ one[2] }} to {{ one[3] }} on {{ one[5] }}
+						</span>
+					</div>
+
+					
+						<br>Route :{{ one[4] }}
+						<br>Time :{{ one[6] }}
+						<br>Seat :{{ one[9] }}
+						<br>Payment:
+						{% if one[7] %}
+							{{ one[7] }}
+						{% else %}
+							<form method="POST" action="">
+								<input type="hidden" name="reservation_id" value="{{ one[0] }}">
+								<input type="submit" name="pay_reservation" value="PAY" class="btn btn-primary">
+							</form>
+							
+
+							<form method="POST" action="">
+								<input type="hidden" name="reservation_id" value="{{ one[0] }}">
+								<input type="submit" name="delete_reservation_done" value="Delete Reservation" class="btn btn-danger float-right">
+							</form>
+						{% endif %}
+
+						<br><br>Travelled:
+						{% if one[8] %}
+							Traveled
+							<br>
+							<form method="POST" action="">
+								<input type="hidden" name="reservation_id" value="{{ one[0] }}">
+								<input type="submit" name="delete_reservation_done" value="Delete Reservation" class="btn btn-danger float-right">
+							</form>
+							
+						{% else %}
+						{% if one[7] %}
+							<form method="POST" action="">
+								<input type="hidden" name="reservation_id" value="{{ one[0] }}">
+							<input type="submit" name="traveled" value="Confirm Travelled" class="btn btn-primary">	
+							</form>
+						{% else %}
+						Not Yet
+						{% endif %}
+
+						{% endif %}
+					</div>
+				</div>
+			</li>
+			{% endfor %}
+		</ul>
+
+
+	</div>
+</div>
+
+</div>
+
+{% endblock body%}

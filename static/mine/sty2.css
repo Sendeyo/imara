@@ -1,0 +1,32 @@
+html body{
+  background-color: rgb(158, 158, 158);
+}
+.custom-card{
+  align-self: center;
+  color: aqua;
+  height:200px;
+  background:rgb(29, 77, 66);
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 50px 20px 0px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+}
+
+.my-table{
+  padding: 10px;
+  
+}
+
+.home{
+  background-color: rgb(97, 96, 96);
+  min-height: 100%;
+  background-image: url("../images/conference-hall.jpg");
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-attachment: fixed;
+  background-size: 100% ;
+  background-blend-mode: multiply;
+
+  
+}

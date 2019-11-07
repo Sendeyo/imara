@@ -1,0 +1,127 @@
+{% extends "structure.html" %}
+{% include "includes/_navbar.html" %}
+{% block body %}
+
+<div class="container-fluid">
+        {% if message %}
+    
+        <div class="alert alert-warning alert-dismissible fade show">
+            <strong>Note!</strong> {{ message }}
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+        {% endif %}
+
+    {% if rows %}
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-12"></div>
+        <div class="col-lg-8 col-md-8 col-sm-12">
+            <div class="my-table">
+                <table class="table table-sm table-dark table-hover">
+                    <thead class="thead-dark">
+                        {% for title in titles%}
+                        <th>{{ title }}</th>
+                        {% endfor %}
+                    </thead>
+                    {% for row in rows%}
+                    <tr>
+                        {% for x in range(0, columns)%}
+                        <td>{{ row[x] }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor%}
+                </table>
+
+                <a href="/uploads/add" class="btn btn-info form-control"><span class="h5">Register Members Shown Above </span></a>
+            
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-12"></div>
+
+    {% else %}
+    <div class="row padding">
+            <!--left-->
+            <div class="col-lg-4 col-md-5 col-sm-6">
+                <div class="">
+                    <div class="card-header"><span class="h3">Register Member</span></div>
+                    <div class="">
+                        <br>
+    
+                        <form action="" method="POST" class="form-group">
+                            <input type="text" name="number" value="{{ request.form.number }}" class="form-control"
+                                placeholder="Member number" required>
+                            <br>
+                            <input type="number" name="id" value="{{ request.form.id }}" class="form-control"
+                                placeholder="National Id">
+                            <br>
+                            <input type="text" name="name" value="{{ request.form.name }}" class="form-control"
+                                placeholder="Full Name" required>
+                            <br>
+                            <input type="text" name="station" value="{{ request.form.station }}" class="form-control"
+                                placeholder="Station" required>
+                            <br>
+                            <input type="number" name="phone" value="{{ request.form.phone }}" class="form-control"
+                                placeholder="Phone Number">
+                            <br>
+                            <input type="text" name="bank" value="{{ request.form.bank }}" class="form-control"
+                                placeholder="Bank">
+                            <br>
+                            <input type="number" name="account" value="{{ request.form.account }}" class="form-control"
+                                placeholder="Account Number">
+                            <br>
+                            {% if error %}
+    
+                            <div class="alert alert-danger alert-dismissible fade show">
+                                <strong>Warning!</strong> {{ error }}
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            </div>
+                            <br>
+                            {% endif %}
+                            <input type="submit" name="login" value="Create account" class="btn btn-success form-control">
+                        </form>
+                    </div>
+                    <div class="card-footer row">
+                        <div class="col-6">
+                            <a href="/home/Admin Panel">
+                                <h3>Cancel</h3>
+                            </a>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+    
+            <!--center-->
+            <div class="col-lg-4 col-md-5 col-sm-6">
+                <div id="small-space"></div>
+                <div>
+                    <p class="h5">Use the button below to generate a Spreadsheet document to use to register members.</p>
+                </div>
+                <a href="/downloads/members" class="btn btn-info"><span class="h3">DOWNLOAD SPREADSHEET</span></a>
+            </div>
+    
+    
+            <!--right-->
+            <div class="col-lg-4 col-md-5 col-sm-6">
+                <div id="small-space"></div>
+                <div>
+                    <p class="h5">Select a Spreadsheet document containing member info you want to Add.</p>
+                </div>
+                <form action="/uploads/members" method="POST" class="form-group form-inline" enctype="multipart/form-data">
+                    <input type="file" name="file" id="" class="form-control btn btn-info" required>
+                    <input type="submit" value="UPLOAD SPREADSHEET" name="submit" id=""
+                        class="form-control btn btn-warning">
+    
+                </form>
+            </div>
+            <!-- end right -->
+    
+        </div>
+    </div>
+    
+    {% endif %}
+
+
+{% endblock body %}

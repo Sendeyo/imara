@@ -1,0 +1,25 @@
+{% extends "structure.html"%}
+{% include "includes/_navbar.html"%}
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+		<img src="{{ url_for('static', filename='images/image2.jpg') }}" class="img-fluid">
+		</div>
+		<div class="col-md-4">
+		<form method="POST", action="/pick" class="form-group">
+			<span class="h3">SEAT NUMBER:</span>
+		<input type="hidden" value="{{ id }}" name="reservation_id">
+		<select class="form-control" name="seat">
+			{% for x in seats %}
+			  <option value="{{ x }}">{{ x }}</option>
+			{% endfor %}
+		</select> 
+		<br>
+		<input type="submit" name="pice" value="Select" class="form-control btn btn-success">
+		</form>		
+		</div>
+	</div>
+</div>
+
+{% endblock %}

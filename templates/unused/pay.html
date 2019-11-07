@@ -1,0 +1,46 @@
+{% extends "structure.html"%}
+{% include "includes/_navbar.html"%}
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			
+			{% if message %}
+				<div class="card">
+					<div class="card-header">
+						<p class="text-center"><span class="h3">{{ message }}</span></p>
+					</div>
+				</div>
+			{% else %}
+			<div class="card">
+				<div class="card-header"><p class="text-center"><span class="h1">PAYMENT</span></p></div>
+				<div class="card-body">
+				<p class="justify h3">The cost will be deducted from your COUPONS</p>
+				</div>
+				<div class="card-footer">
+					<form method="POST" action="/pay" class="form-group">
+					<div class="row">
+						<div class="col-md-6"><a href="/dashboard" class="form-control btn btn-success">CANCEL</a></div>
+						<div class="col-md-6">
+							<input type="hidden" name="verify" value="{{ verification }}">
+							<input type="submit" name="pay_now" value="PAY" class="form-control btn btn-primary">
+						</div>
+					</div>
+					</form>
+				</div>
+			</div>
+			{% endif %}
+
+
+
+
+
+
+		</div>
+		<div class="col-md-4"></div>
+	</div>
+
+</div>
+
+{% endblock body%}

@@ -1,0 +1,37 @@
+{% extends "structure.html" %}
+{% block body %}
+
+<div class="container-fluid home">
+    <div class="row">
+
+        {% for tile in tiles%}
+        <div class="col-md-3">
+                <a href="/home/{{ tile }}">
+                    <div class="custom-card">
+                        <h3>
+                            {{ tile }}
+                        </h3>
+                    </div>
+                </a>
+            </div>        
+        {% endfor %}
+
+        
+
+    </div>
+</div>
+
+
+
+
+<!-- <div class="jumbotron">
+
+    <div class="d-sm-none">xs extra small</div>
+    <div class="d-none d-sm-block d-md-none">sm small</div>
+    <div class="d-none d-md-block d-lg-none">md medium</div>
+    <div class="d-none d-lg-block d-xl-none">ls large</div>
+    <div class="d-none d-xl-block">xl Extra large</div>
+
+
+</div> -->
+{% endblock body%}

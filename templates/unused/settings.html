@@ -1,0 +1,47 @@
+{% extends "structure.html" %}
+{% include "includes/_navbar.html" %}
+{% block body %}
+
+<div class="row container">
+
+<div class="col-md-6 container" >
+	<div class="card">
+	  <div class="card-header"><img class="rounded img-fluid mx-auto d-block" src="{{ url_for('static', filename='user.png') }}"></div>
+	  <div class="card-body justify" id="container">
+	  	<span class="h4">Phone: {{ info[3] }}</span><br>
+	  	<span class="h4">Gender: {{ info[4] }}</span><br>
+	  	<span class="h4">Home: {{ info[6] }}</span><br>
+	  	<span class="h4">Coupons: {{ info[7] }}</span><br>
+	  	<span class="h4">Category: {{ info[8] }}</span><br>
+	  	<span class="h4">email: {{ info[2] }}</span><br>
+	  </div>
+	  <div class="card-footer">
+	  <span class="h1">{{ info[1] }}</span><br>
+	   </div>
+	</div>
+
+</div>
+
+<div class="col-md-6" id="container">
+	<div class="row">
+	  <span class="h3">Edit</span><br>
+	  <div>
+	  	<form class="form-group" method="POST" action="/settings" id="container">
+	  		<select name="field" class="form-control">
+			{% for x in editable %}
+			  <option value="{{ x }}">{{ x }}</option>
+			{% endfor %}
+		</select><br>
+	  		<input type="text" class="form-control" name="value" value="{{ request.form.value }}"><br>
+	  		<input type="submit" value="Change" class="form-control btn btn-danger" name="change">
+	  	</form>
+	  </div>
+	  </div>
+	  <span class="h3">{{ error }}</span>
+</div>
+	
+</div>
+
+
+
+{% endblock %}

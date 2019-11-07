@@ -1,0 +1,29 @@
+<div class="">
+	<div class="row">
+	
+	<div class="col-sm-6">
+	<!--Adding a route-->
+	<br>
+	<form class="form-group" id="container" method="POST" action="/admin">
+		<br>
+		<span class="h3">Add a route</span>
+		<br><br>
+		<input type="text" placeholder="Name of route" name="name" value="{{ request.form.name }}" class="form-control"><br>
+		<input type="text" placeholder="Start location" name="start" value="{{ request.form.name }}" class="form-control"><br>
+		<input type="text" placeholder="Stop location" name="stop" value="{{ request.form.name }}" class="form-control"><br>
+		<input type="number" placeholder="Price" name="price" value="{{ request.form.name }}" class="form-control"><br>
+		<input type="submit" name="route" class="form-control btn btn-success" value="Add route">
+	</form>
+	</div><!--End adding a route-->
+	<!-- end of row 1 -->
+
+	<div class="col-md-6">
+	<br><br>
+		<form class="form-group" method="POST" action="/admin">
+			<input type="text" placeholder="Enter Date" name="date" value="{{ request.form.date }}" class="form-control"><br>
+			<input type="submit" name="addDate" class="form-control btn btn-success" value="Add route">
+		</form>
+	</div>
+
+
+</div>

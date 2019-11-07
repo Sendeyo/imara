@@ -1,0 +1,29 @@
+{% extends "structure.html" %}
+{% include "includes/_admin-nav.html" %}
+{% block body %}
+<div class="container">
+
+	<div class="col-md-6" id="container">
+	<div class="row">
+	  
+	  <div>
+	  	<form class="form-group" method="POST" action="/editUser" id="container">
+	  	<span class="h3">Edit for {{ victim }}</span><br>
+	  	<input type="hidden" name="victim" value="{{ victim }}">
+	  		<select name="field" class="form-control">
+			{% for x in editable %}
+			  <option value="{{ x }}">{{ x }}</option>
+			{% endfor %}
+		</select><br>
+	  		<input type="text" class="form-control" name="value" value="{{ request.form.value }}"><br>
+	  		<input type="submit" value="Change" class="form-control btn btn-danger" name="change">
+	  	</form>
+	  </div>
+	  </div>
+	  <span class="h3">{{ error }}</span>
+</div>
+
+</div>
+
+
+{% endblock %}

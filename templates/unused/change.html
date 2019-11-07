@@ -1,0 +1,33 @@
+{% extends "structure.html" %}
+{% block body %}
+
+<div class="row">
+<div class="col-sm-4"></div>
+<div class="col-sm-4">
+	<div id="form-container-normal">
+	<br>
+	<form method="POST" action="/change" class="form-group">
+		<input class="form-control" required type="email" placeholder="Enter Email" name="email" value="{{ request.form.email }}"><br>
+		<input class="form-control" required type="text" placeholder="Enter sent Token" name="token" value="{{ request.form.token }}"><br>
+		<input class="form-control" required type="password" placeholder="Enter your new password" name="password" value="{{ request.form.password }}"><br>
+		<input class="form-control" required type="password" placeholder="confirm" name="confirm" value="{{ request.form.confirm }}"><br>
+
+		<div class="row">
+			<div class="col-sm-6">
+				<a href="/" class="form-control btn btn-success">Cancel</a>
+			</div>
+		<div class="col-sm-6"><input class="form-control btn btn-danger" type="submit" name="Reset" value="RESET PASSWORD"></div>
+		</div>
+		{% if error %}
+		<br><br>
+		<span id="container">{{ error }}</span>
+		{% endif %}
+	</form>
+	</div>
+
+</div>
+<div class="col-sm-4"></div>
+	
+</div>
+<a href="/change"></a>
+{% endblock %}

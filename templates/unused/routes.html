@@ -1,0 +1,36 @@
+{% extends "structure.html" %}
+{% include "includes/_admin-nav.html" %}
+{% block body %}
+<div class="container">
+
+	<table class="table table-stripped">
+	<tr>
+		<th>Id</th><th>Route</th><th>Origin</th><th>Destination</th><th>Cost</th><th>Delete</th><th>Edit</th>
+	</tr>
+	{% for data in routes %}
+	<tr>
+	{% for dat in data %}
+	 <td>
+	 	{{ dat }}
+	 </td>
+	 {% endfor %}
+	 <td>
+	 	<form method="POST" action="/routes">
+	 		<input type="hidden" name="value" value="{{ data[0] }}">
+	 		<input type="submit" name="delete" value="Delete" class="btn btn-danger">
+	 	</form>
+	 </td>
+	 <td>
+	 	<form method="POST" action="/routes">
+	 		<input type="hidden" name="value" value="{{ data[0] }}">
+	 		<input type="submit" name="edit" value="Edit" class="btn btn-primary">
+	 	</form>
+	 </td>
+	</tr>
+	{% endfor %}	
+	</table>
+
+</div>
+
+
+{% endblock %}

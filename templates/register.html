@@ -1,0 +1,65 @@
+{% extends "structure.html" %}
+{% block body %}
+
+<div class="container-fluid">
+    <div class="row padding">
+        <!--left-->
+        <div class="col-sm-1 col-md-3"> </div>
+
+        <!--center-->
+        <div class="col-sm-6 col-md-5">
+            <div class="" id="login"> 
+                <div class="card-header">Register user</div>
+                <div class="">
+                    <br>
+                    {% if message %}
+                    
+                    <div class="alert alert-success alert-dismissible fade show">
+                        <strong>Note!</strong> {{ message }}
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    </div>
+                    <br>
+                    {% endif %}
+
+                    <form action="" method="POST" class="form-group">
+                        <input type="text" name="username" value="{{ request.form.username }}" class="form-control" placeholder="Username" required>
+                        <br>
+                        <input type="email" name="email" value="{{ request.form.email }}" class="form-control" placeholder="Email" required>
+                        <br>
+                        <input type="password" name="password" value="{{ request.form.password }}" class="form-control" placeholder="Password" required>
+                        <br>
+                        <input type="password" name="confirm-password" value="{{ request.form.confirm }}" class="form-control" placeholder="Confirm Password" required>
+                        <br>
+                        {% if error %}
+                    
+                        <div class="alert alert-danger alert-dismissible fade show">
+                            <strong>Warning!</strong> {{ error }}
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        </div>
+                        <br>
+                        {% endif %}
+                        <input type="submit" name="login" value="Create account" class="btn btn-success">
+                    </form>
+                </div>
+                <div class="card-footer row">
+                    <div class="col-6">
+                        <a href="/">Back to log in?</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!--right-->
+        <div class="col-sm-5 col-md-4">
+                <div id="small-space"></div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+{% endblock body %}

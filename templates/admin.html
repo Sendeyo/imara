@@ -1,0 +1,25 @@
+{% extends "structure.html" %}
+
+{% block body %}
+
+<div class="container-fluid home">
+        <div class="row">
+    
+            {% for tile in tiles%}
+            <div class="col-md-3">
+                    <a href="/Admin/{{ tile }}">
+                        <div class="custom-card">
+                            <h3>
+                                {{ tile }}
+                            </h3>
+                        </div>
+                    </a>
+                </div>        
+            {% endfor %}
+    
+            
+    
+        </div>
+    </div>
+
+{% endblock body %}
